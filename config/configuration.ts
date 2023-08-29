@@ -1,10 +1,3 @@
-let envFilePath = '';
-if (process.env.NODE_ENV === 'development') {
-  envFilePath = '.env.dev';
-} else if (process.env.NODE_ENV === 'production') {
-  envFilePath = '.env.prod';
-}
-require('dotenv').config({ path: envFilePath });
 export default () => ({
   type: 'mysql',
   host: process.env.DB_HOST,
@@ -12,4 +5,6 @@ export default () => ({
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
+  logging: process.env.DB_LOGGING, //生产模式关闭
+  sync: process.env.DB_SYNC, //生产模式必须关闭
 });
