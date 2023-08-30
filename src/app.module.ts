@@ -28,6 +28,7 @@ import { BookModule } from './modules/book/book.module';
           database: config.get('DB_NAME'),
           username: config.get('DB_USER'),
           password: config.get('DB_PASSWORD'),
+          autoLoadEntities: config.get('DB_AUTO'), //自动加载实体
           logging: config.get('DB_LOGGING'),
           synchronize: config.get('DB_SYNC'),
           entities: [__dirname + '/**/*.entity{.ts,.js}'], //这个实体是编译后的dist下
