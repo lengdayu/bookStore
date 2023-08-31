@@ -32,4 +32,9 @@ export class UserService {
     let res = await this.userRepository.update(id, user);
     return res;
   }
+
+  //用户名查找用户
+  async findByName(username: string): Promise<User> {
+    return await this.userRepository.findOneBy({ username });
+  }
 }
