@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 import { User } from './user.entity';
+import * as md5 from 'md5';
 
 @Injectable()
 export class UserService {
@@ -19,6 +20,8 @@ export class UserService {
   }
   //添加用户
   async create(user: User): Promise<User> {
+    console.log(user);
+    user.password = md5(user.password).toUpperCase();
     let res = await this.userRepository.save(user);
     return res;
   }

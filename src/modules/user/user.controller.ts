@@ -8,6 +8,7 @@ import {
 } from '@nestjs/common';
 import { UserService } from './User.service';
 import { User } from './user.entity';
+import { Public } from './public.decorator';
 
 @Controller('user')
 export class UserController {
@@ -26,6 +27,7 @@ export class UserController {
   }
 
   //添加用户
+  @Public()
   @Post('/add')
   addUser(@Body() user: User) {
     return this.userService.create(user);

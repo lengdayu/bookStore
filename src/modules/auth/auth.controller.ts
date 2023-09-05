@@ -8,10 +8,6 @@ export class AuthController {
   @Public()
   @Post('login')
   async login(@Body() params) {
-    console.log(params);
-    await this.authService.login(params.username, params.password);
-    return {
-      message: 'get auth',
-    };
+    return this.authService.login(params.username, params.password);
   }
 }
